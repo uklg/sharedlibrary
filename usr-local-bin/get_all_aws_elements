@@ -54,3 +54,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# todo make it check non running
+# add in extra things to check like subnets and elbs
