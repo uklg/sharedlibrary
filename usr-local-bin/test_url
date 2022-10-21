@@ -1,0 +1,39 @@
+#!/bin/bash
+
+test_url () {
+
+
+  checkcode=1
+  i=12
+  until [ $checkcode == 0 ]
+  do
+    checkcode=$(curl --connect-timeout 60 ${1}:${2}|grep 'Hello World' > /dev/null;echo $?)
+    i=$((i-1))
+    if [[ $i == "1" ]]
+      then
+      echo 'timing out as took too long'
+      break
+    fi
+
+
+    sleep 10
+    # to make fail for test: sleep 5
+  done
+
+
+    if [[ $checkcode != "0" ]]
+      then
+      echo test failed for access to ${1}:${2}
+    else
+      echo test passed  for access to ${1}:${2}
+
+    fi
+
+    echo ${checkcode}
+
+}
+
+
+test_url $1 $2
+
+

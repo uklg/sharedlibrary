@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo test accessing google times out after timeout period if test object is deliberately not there
+
