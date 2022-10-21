@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cp /home/rm/docker/sharedlibrary/skeletons/calc/*.py .
+cp /home/rm/docker/sharedlibrary/skeletons/calc/*.sh .
+
