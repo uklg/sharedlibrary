@@ -1,0 +1,24 @@
+#!/bin/bash
+
+dpkg -l|grep at|grep ii|grep Delayed > /dev/null
+isatinstalled=$(echo $?)
+
+echo a${isatinstalled}a
+
+if [[ ${isatinstalled} != 0 ]]
+then 
+  echo at not installed so installing
+  sudo apt-get install at -f
+
+fi
+
+
+zenity --info --text "Saluton mondo"
+
+#t=$(ls)
+
+#if [[ dpkg
+
+#sudo apt-get install at -f
+
+#echo /path/to/my/script | at now + 5 min

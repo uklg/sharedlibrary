@@ -1,0 +1,6 @@
+#!/bin/bash
+export last_created_id=$(docker ps -n1|grep -v CONTAINER|awk '{ print $1 }')
+
+# better experience than sh
+docker exec -i -t ${last_created_id} /bin/bash
+

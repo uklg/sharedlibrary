@@ -1,0 +1,55 @@
+#!/bin/bash
+SHELL=/bin/bash
+SESSION_MANAGER=local/mini:@/tmp/.ICE-unix/2853,unix/mini:/tmp/.ICE-unix/2853
+WINDOWID=56174259
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-mate:/etc/xdg
+GTK_IM_MODULE=ibus
+LANGUAGE=en_GB:en
+QT4_IM_MODULE=ibus
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=mate
+SSH_AGENT_PID=2939
+GTK_MODULES=gail:atk-bridge:gail:atk-bridge:canberra-gtk-module
+XDG_SEAT=seat0
+MATE_DESKTOP_SESSION_ID=this-is-deprecated
+PWD=/home/rm
+LOGNAME=rm
+XDG_SESSION_DESKTOP=mate
+QT_QPA_PLATFORMTHEME=gtk2
+XDG_SESSION_TYPE=x11
+GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+XAUTHORITY=/run/user/1000/gdm/Xauthority
+WINDOWPATH=2
+HOME=/home/rm
+USERNAME=rm
+LANG=en_GB.UTF-8
+XDG_CURRENT_DESKTOP=MATE
+VTE_VERSION=6003
+CLUTTER_IM_MODULE=ibus
+#LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+GTK_OVERLAY_SCROLLING=0
+LESSOPEN=| /usr/bin/lesspipe %s
+LIBVIRT_DEFAULT_URI=qemu:///system
+USER=rm
+DISPLAY=:0.0
+SHLVL=1
+QT_IM_MODULE=ibus
+XDG_VTNR=2
+XDG_SESSION_ID=3
+XDG_RUNTIME_DIR=/run/user/1000
+COMPIZ_CONFIG_PROFILE=mate
+QT_AUTO_SCREEN_SCALE_FACTOR=0
+XDG_DATA_DIRS=/usr/share/mate:/usr/share/mate:/home/rm/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+PATH=/home/rm/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+GDMSESSION=mate
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+QT_SCALE_FACTOR=1
+_=/usr/bin/env
+
+zenity --info --text "Saluton mondo"
+echo $(date) >> /tmp/thisisrunning.out
