@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# needs to be in path and provides a 
+# test_url url port
+# interface so far
+
 test_url () {
 
 
@@ -32,6 +36,7 @@ test_url () {
     echo ${checkcode}
 
 }
+
 
 
 test_url $1 $2
