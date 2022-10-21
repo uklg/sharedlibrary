@@ -57,11 +57,19 @@ def main(type='instance'):
             response = client.describe_nat_gateways()
             #for r in response['ResponseMetadata']:
             for r in response['NatGateways']:
-                 
+               
+                if r['State'] == 'available':
+                    print(r['State'])
+
                 if 'CreateTime' in r.keys():
-                  print(r['State'])
+                    print(r['CreateTime'])
+
+                if 'VpcId' in r.keys():
+                    print(r['VpcId'])
+                #print(r.keys())
+                cnt +=1
                  
-                #pprint.pprint(r)
+                pprint.pprint(r)
                 print(r)
                 #type(r)
                 #print(r['NatGateways'])
