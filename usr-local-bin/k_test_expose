@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo following https://aws.amazon.com/premiumsupport/knowledge-center/eks-kubernetes-services-cluster/
+
+echo need to run this from the terraform dir for now for auth to work
+
+aws eks --region $(terraform output -raw region) update-kubeconfig \
+    --name $(terraform output -raw cluster_name)
+
+
+echo delete if already exists
+kubectl delete -f ~/docker/sharedlibrary/testkub/nginx-deployment.yaml
+kubectl delete -f ~/docker/sharedlibrary/testkub/loadbalancer.yaml
+
+
+kubectl apply -f ~/docker/sharedlibrary/testkub/nginx-deployment.yaml
+kubectl create -f  ~/docker/sharedlibrary/testkub/loadbalancer.yaml
+
+
+
+kubectl get services
+
+
