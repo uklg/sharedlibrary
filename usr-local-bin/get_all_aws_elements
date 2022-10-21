@@ -58,6 +58,7 @@ def main(type='instance'):
             #for r in response['ResponseMetadata']:
             for r in response['NatGateways']:
                
+                """
                 if r['State'] == 'available':
                     print(r['State'])
 
@@ -66,17 +67,16 @@ def main(type='instance'):
 
                 if 'VpcId' in r.keys():
                     print(r['VpcId'])
-                #print(r.keys())
+                if '' in r.keys():
+                    print(r['VpcId'])
+                """
+
+
                 cnt +=1
                  
                 pprint.pprint(r)
-                print(r)
-                #type(r)
-                #print(r['NatGateways'])
-                #print(type(r))
 
             print('---')
-            #pprint.pprint(response)
 
 
     if cnt == 1:
