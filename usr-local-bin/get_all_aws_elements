@@ -7,6 +7,9 @@ os.system('pip3 install boto3')
 
 import boto3
 from botocore.config import Config
+import pprint
+
+
 
 CHECK = "running"
 
@@ -22,7 +25,8 @@ def available_regions(service):
     return regions
 
 
-def main():
+def main(type='instance'):
+    print("checking type: %s" % type)
     print(f"Check for status: {CHECK}")
     regions = available_regions("ec2")
 
@@ -33,16 +37,39 @@ def main():
         # Change regions with config
         my_config = Config(region_name=region)
         client = boto3.client("ec2", config=my_config)
-        response = client.describe_instances()
+        if type ==  'nat_gateway':
+            response = client.describe_nat_gateways()
+        if type == 'instance':
+            response = client.describe_instances()
+            
+            
+            for r in response["Reservations"]:
+                status = r["Instances"][0]["State"]["Name"]
+                if status == "running":
+                    instance_id = r["Instances"][0]["InstanceId"]
+                    instance_type = r["Instances"][0]["InstanceType"]
+                    az = r["Instances"][0]["Placement"]["AvailabilityZone"]
+                    print(f"id: {instance_id}, type: {instance_type}, az: {az}")
+                    cnt += 1
 
-        for r in response["Reservations"]:
-            status = r["Instances"][0]["State"]["Name"]
-            if status == "running":
-                instance_id = r["Instances"][0]["InstanceId"]
-                instance_type = r["Instances"][0]["InstanceType"]
-                az = r["Instances"][0]["Placement"]["AvailabilityZone"]
-                print(f"id: {instance_id}, type: {instance_type}, az: {az}")
-                cnt += 1
+
+        if type ==  'nat_gateway':
+            response = client.describe_nat_gateways()
+            #for r in response['ResponseMetadata']:
+            for r in response['NatGateways']:
+                 
+                if 'CreateTime' in r.keys():
+                  print(r['State'])
+                 
+                #pprint.pprint(r)
+                print(r)
+                #type(r)
+                #print(r['NatGateways'])
+                #print(type(r))
+
+            print('---')
+            #pprint.pprint(response)
+
 
     if cnt == 1:
         print(f"{cnt} instance is {CHECK}!")
@@ -53,7 +80,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+#    main()
+    main('nat_gateway')
 
 # todo make it check non running
 # add in extra things to check like subnets and elbs
