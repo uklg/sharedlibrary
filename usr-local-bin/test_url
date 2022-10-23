@@ -63,5 +63,5 @@ test_url $1 $2 ${search_string}
 # ./test_url http://dog.com 80 dog
 # test passed
 
-./test_url http://dog.com 80 dogd
+# ./test_url http://dog.com 80 dogd
 # test timed out
