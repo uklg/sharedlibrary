@@ -65,3 +65,5 @@ test_url $1 $2 ${search_string}
 
 # ./test_url http://dog.com 80 dogd
 # test timed out
+
+# todo add unit test and end to end test (python probably) and then take out the 10 second gap after success after guarenteeing all components work
