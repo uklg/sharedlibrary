@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # needs to be in path and provides a 
-# test_url url port
+# test_url url port {optional checkstring}
 # interface so far
 
 test_url () {
@@ -11,7 +11,7 @@ test_url () {
   i=12
   until [ $checkcode == 0 ]
   do
-    checkcode=$(curl --connect-timeout 60 ${1}:${2}|grep 'Hello World' > /dev/null;echo $?)
+    checkcode=$(curl --connect-timeout 60 ${1}:${2}|grep ${3} > /dev/null;echo $?)
     i=$((i-1))
     if [[ $i == "1" ]]
       then
@@ -39,6 +39,29 @@ test_url () {
 
 
 
-test_url $1 $2
+
+if [[ $# -lt 3 ]]; then
+    echo "Not defined searchstring param so using 'Hello World'" >&2
+    export search_string='Hello World'
+    #exit 2
+else search_string=$3
+fi
+
+echo ${search_string}
 
 
+test_url $1 $2 ${search_string}
+
+
+# unit test length of test
+# values 
+# parameters
+# etc
+# end to end 
+# https check
+
+# ./test_url http://dog.com 80 dog
+# test passed
+
+./test_url http://dog.com 80 dogd
+# test timed out
