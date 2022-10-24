@@ -1,4 +1,24 @@
 #!/bin/bash
 
+set -x
+
 echo test accessing google times out after timeout period if test object is deliberately not there
+
+echo This should pass as content is part of site
+
+test_url http://dog.com 80 dog
+
+
+echo This is not present so should keep trying till forced timeout 
+
+
+timeout 10 test_url http://dog.com 80 dognothere
+
+
+
+echo "This content (default hello world) is not present so should keep trying till forced timeout"
+
+timeout 10 test_url http://dog.com 80
+
+
 
