@@ -8,10 +8,10 @@ test_url () {
 
 
   checkcode=1
-  i=12
+  i=120
   until [ $checkcode == 0 ]
   do
-    checkcode=$(curl --connect-timeout 60 ${1}:${2}|grep ${3} > /dev/null;echo $?)
+    checkcode=$(curl --silent --connect-timeout 60 ${1}:${2}|grep ${3} > /dev/null;echo $?)
     i=$((i-1))
     if [[ $i == "1" ]]
       then
@@ -20,7 +20,7 @@ test_url () {
     fi
 
 
-    sleep 10
+    sleep 1
     # to make fail for test: sleep 5
   done
 
@@ -46,6 +46,9 @@ if [[ $# -lt 3 ]]; then
     #exit 2
 else search_string=$3
 fi
+
+
+
 
 echo ${search_string}
 
